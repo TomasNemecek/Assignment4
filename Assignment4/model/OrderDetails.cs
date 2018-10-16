@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Assignment4.model
 {
     [Table("orderdetails")]
-    public class OrderDetail
+    public class OrderDetails
     {
         //Composite key setup in context 
         //TODO change all mapping to context?

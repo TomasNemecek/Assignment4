@@ -12,7 +12,7 @@ namespace Assignment4.model
 
         [Column("orderdate")] public DateTime Date { get; set; }
 
-        [Column("requireddate")] public DateTime RequiredDate { get; set; }
+        [Column("requireddate")] public DateTime Required { get; set; }
 
         [Column("shippeddate")] public DateTime ShippedDate { get; set; }
 
