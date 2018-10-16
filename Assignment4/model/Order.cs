@@ -8,6 +8,11 @@ namespace Assignment4.model
     [Table("orders")]
     public class Order
     {
+        public Order()
+        {
+            OrderDetails = new HashSet<OrderDetails>();
+        }
+
         [Key, Column("orderid")] public int Id { get; set; }
 
         [Column("orderdate")] public DateTime Date { get; set; }
@@ -22,7 +27,6 @@ namespace Assignment4.model
 
         [Column("shipaddress")] public string ShipCity { get; set; }
 
-
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }

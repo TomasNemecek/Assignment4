@@ -7,6 +7,11 @@ namespace Assignment4.model
     [Table("categories")]
     public class Category
     {
+        public Category()
+        {
+            Products = new HashSet<Product>();
+        }
+
         [Key, Column("categoryid")] public int Id { get; set; }
 
         [Column("categoryname")] public string Name { get; set; }
