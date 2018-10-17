@@ -119,6 +119,7 @@ namespace Assignment4.test
         [Fact]
         public void GetProduct_NameSubString_ReturnsProductsThatMachesTheSubString()
         {
+            // TODO Only 1 record exists where the product name contains 'ant'
             var service = new DataService();
             var products = service.GetProductByName("ant");
             Assert.Equal(3, products.Count);
@@ -141,6 +142,7 @@ namespace Assignment4.test
         [Fact]
         public void Order_Object_HasIdDatesAndOrderDetails()
         {
+            //
             var order = new Order();
             Assert.Equal(0, order.Id);
             Assert.Equal(new DateTime(), order.Date);
@@ -200,7 +202,8 @@ namespace Assignment4.test
             var service = new DataService();
             var orderDetails = service.GetOrderDetailsByProductId(11);
             Assert.Equal(38, orderDetails.Count);
-            Assert.Equal("1996-07-04", orderDetails.First().Order.Date.ToString("yyyy-MM-dd"));
+            //TODO - had to change to nullable implementation
+            Assert.Equal("1996-07-04", orderDetails.First().Order.Date.GetValueOrDefault().ToString("yyyy-MM-dd"));
             Assert.Equal(14, orderDetails.First().UnitPrice);
             Assert.Equal(12, orderDetails.First().Quantity);
         }

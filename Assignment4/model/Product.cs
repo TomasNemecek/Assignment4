@@ -7,11 +7,7 @@ namespace Assignment4.model
     [Table("products")]
     public class Product
     {
-        public Product()
-        {
-            OrderDetails = new HashSet<OrderDetails>();
-        }
-
+        
         [Key, Column("productid")] public int Id { get; set; }
         
         [Column("productname")] public string Name { get; set; }

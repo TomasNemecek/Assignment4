@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Assignment4.database
 {
-    class NorthWindContext : DbContext
+    public class NorthWindContext : DbContext
     {
 
         public DbSet<Category> Categories { get; set; }
@@ -22,9 +22,6 @@ namespace Assignment4.database
         {
             //Order details
             base.OnModelCreating(modelBuilder);
-
-            //            buildProductConfig(modelBuilder);
-
             BuildOrderDetailsConfig(modelBuilder);
         }
 
@@ -39,7 +36,7 @@ namespace Assignment4.database
             builder.Entity<OrderDetails>().Property(d => d.UnitPrice).HasColumnName("unitprice");
             builder.Entity<OrderDetails>().Property(d => d.Quantity).HasColumnName("quantity");
             builder.Entity<OrderDetails>().Property(d => d.Discount).HasColumnName("discount");
-          
+            
             builder.Entity<OrderDetails>()
                 .HasOne(d => d.Order)
                 .WithMany(p => p.OrderDetails)
@@ -55,7 +52,7 @@ namespace Assignment4.database
                 .HasConstraintName("FK_ORDERDETAIL_PRODUCT");
         }
 
-        private void buildProductConfig(ModelBuilder builder)
+        private void BuildProductConfig(ModelBuilder builder)
         {
             builder.Entity<Product>().ToTable("products");
             builder.Entity<Product>().HasKey(e => e.Id);

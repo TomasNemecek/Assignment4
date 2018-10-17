@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Assignment4.database;
+using Assignment4.dataservice;
+using Assignment4.model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Assignment4
@@ -8,14 +11,26 @@ namespace Assignment4
     {
         static void Main(string[] args)
         {
-            using (var db = new NorthWindContext())
-            {
-                
-                ShowProducts(db);
-                ShowOrderDetails(db);
-            }
+
+
+            var service = new DataService();
+            var order = service.GetOrder(10248);
+            Console.WriteLine($"Id: {order.Id}, Date: {order.Date}, ShipDate: {order.ShippedDate}");
+            //
             
-            Console.WriteLine("Press any key to close");
+//            var prod = service.GetProduct(1);
+//             Console.WriteLine($"Id: {prod.Id}");
+
+//            using (var db = new NorthWindContext())
+//            {
+//                ShowOrders(db);
+//            }
+
+                //                ShowProducts(db);
+                //                ShowOrderDetails(db);
+
+
+                Console.WriteLine("Press any key to close");
             Console.ReadKey();
         }
 
@@ -38,6 +53,14 @@ namespace Assignment4
             }
         }
 
+        private static void ShowOrders(NorthWindContext db)
+        {
+            Console.WriteLine("Orders:");
+            foreach (var el in db.Orders.Take(10))
+            {
+                Console.WriteLine($"{el.Id}  ({el.Date})");
+            }
+        }
 
     }
 }

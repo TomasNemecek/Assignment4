@@ -141,7 +141,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="database\NorthWindContext.cs" />
+    <Compile Include="Database\NorthWindContext.cs" />
     <Compile Include="dataservice\DataService.cs" />
     <Compile Include="dataservice\IDataService.cs" />
     <Compile Include="model\Category.cs" />
