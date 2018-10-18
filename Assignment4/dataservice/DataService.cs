@@ -67,7 +67,7 @@ namespace Assignment4.dataservice
         {
             return Context.Products
                 .Include(prod => prod.Category)
-                .Where(p => p.Name.Contains(name)).ToList();
+                .Where(p => p.Name.ToLower().Contains(name.ToLower())).ToList();
         }
 
         public ICollection<Product> GetProductByCategory(int categoryId)
